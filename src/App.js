@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { Thought } from "./Thought";
+import { generateId, getNewExpirationTime } from "./utilities";
 
 export default function App() {
+  const [thoughts, setThoughts] = useState([
+    {
+      id: generateId(),
+      text: "This is a place for your passing thoughts.",
+      expiresAt: getNewExpirationTime(),
+    },
+    {
+      id: generateId(),
+      text: "They'll be removed after 15 seconds.",
+      expiresAt: getNewExpirationTime(),
+    },
+  ]);
+
   return (
     <div className="App">
       <header>
@@ -16,20 +31,11 @@ export default function App() {
           <input type="submit" value="Add" />
         </form>
         <ul className="thoughts">
-          <li className="thought">
-            <button aria-label="Remove thought" className="remove-button">
-              x
-            </button>
-            <div className="text">Thought example</div>
-          </li>
-          <li className="thought">
-            <button aria-label="Remove thought" className="remove-button">
-              x
-            </button>
-            <div className="text">Thought example</div>
-          </li>
+          {thoughts.map((thought) => (
+            <Thought key={thought.id} thought={thought} />
+          ))}
         </ul>
       </main>
     </div>
   );
-};
+}
