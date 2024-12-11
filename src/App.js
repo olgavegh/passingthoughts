@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Thought } from "./Thought";
 import { generateId, getNewExpirationTime } from "./utilities";
+import { AddThoughtForm } from "./AddThoughtForm";
 
 export default function App() {
   const [thoughts, setThoughts] = useState([
@@ -22,14 +23,7 @@ export default function App() {
         <h1>Passing Thoughts</h1>
       </header>
       <main>
-        <form className="AddThoughtForm">
-          <input
-            type="text"
-            aria-label="What's on your mind?"
-            placeholder="What's on your mind?"
-          />
-          <input type="submit" value="Add" />
-        </form>
+        <AddThoughtForm />
         <ul className="thoughts">
           {thoughts.map((thought) => (
             <Thought key={thought.id} thought={thought} />
