@@ -7,6 +7,17 @@ export function Thought(props) {
     removeThought(thought.id);
   };
 
+  // Letting Thoughts Drift Away
+  useEffect(() => {
+    const timeRemaining = thought.expiresAt - Date.now();
+    const timeout = setTimeout(() => {
+      removeThought(thought.id);
+    }, timeRemaining);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [thought]);
+
   return (
     <li className="thought">
       <button
