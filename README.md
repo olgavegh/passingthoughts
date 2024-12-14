@@ -2,6 +2,8 @@
 
 This project is a task from Codecademy's React: Component State course. It involves building a simple React application that allows users to add and remove thoughts. Each thought automatically disappears after 15 seconds, simulating passing thoughts.
 
+![ui preview](./public/preview.png)
+
 ## Features
 
 - **Add Thoughts**: Users can type a thought and add it to the list.
